@@ -1,7 +1,6 @@
 ﻿using Consola.Dominio.Empleado;
 using Consola.Dominio;
 using System.Collections.Generic;
-using System;
 
 namespace Consola.Datos
 {
@@ -19,29 +18,43 @@ namespace Consola.Datos
             return Instancia;
         }
 
-        public void CrearAdelanto(Adelanto nuevoAdelanto) {
+        public void CrearAdelanto(Adelanto nuevoAdelanto)
+        {
             ListaAdelantos.Add(nuevoAdelanto);
         }
 
-        // codigoAdelanto sería el seleccionado en la grilla
+        public void CrearEmpleado(EmpleadoAbstracto nuevoEmpleado)
+        {
+            ListaBeneficiarios.Add(nuevoEmpleado);
+        }
+
         public Adelanto BuscarAdelantoPorCodigo(string codigoAdelanto)
         {
             return ListaAdelantos.Find(a => a.Codigo == codigoAdelanto);
         }
 
-        // codigoAdelanto sería el seleccionado en la grilla
         public bool ExisteCodigo(string codigoAdelanto)
         {
             return ListaAdelantos.Exists(a => a.Codigo == codigoAdelanto);
         }
 
-        // codigoAdelanto sería el seleccionado en la grilla
-        public void ActualizarAdelanto(string codigoAdelanto)
+        public bool ExisteLegajo(int legajo)
         {
-            Adelanto adelantoActual = ListaAdelantos.Find(a => a.Codigo == codigoAdelanto);
+            return ListaBeneficiarios.Exists(e => e.Legajo == legajo);
         }
 
-        // codigoAdelanto sería el seleccionado en la grilla
+        public void ActualizarAdelanto(Adelanto adelanto)
+        {
+            int indiceAdelanto = ListaAdelantos.FindIndex(a => a.Codigo == adelanto.Codigo);
+            ListaAdelantos[indiceAdelanto] = adelanto;
+        }
+
+        public void ActualizarEmpleado(EmpleadoAbstracto empleado)
+        {
+            int indiceEmpleado = ListaBeneficiarios.FindIndex(a => a.Legajo == empleado.Legajo);
+            ListaBeneficiarios[indiceEmpleado] = empleado;
+        }
+
         public List<Adelanto> ObtenerAdelantosNoCanceladosPorLegajo(int legajo)
         {
             List<Adelanto> adelantosSinCancelar = ListaAdelantos.FindAll(a => a.Beneficiario == legajo && a.FechaCancelacion == null);

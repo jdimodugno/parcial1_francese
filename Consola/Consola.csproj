@@ -39,6 +39,8 @@
     <Compile Include="Dominio\Adelanto.cs" />
     <Compile Include="Datos\Repositorio.cs" />
     <Compile Include="Negocio\AdelantoNegocio.cs" />
+    <Compile Include="Negocio\EmpleadoNegocio.cs" />
+    <Compile Include="Dominio\Empleado\TipoEmpleadoEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dominio\" />

@@ -8,7 +8,7 @@ namespace Consola.Dominio.Empleado
             string _nombre,
             string _apellido,
             double _sueldo
-        ) : base()
+        )
         {
             Legajo = _legajo;
             Nombre = _nombre;
